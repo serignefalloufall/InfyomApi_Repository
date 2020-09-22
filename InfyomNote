@@ -1,0 +1,2 @@
+php artisan infyom:api_scaffold Typeoperation --fromTable --tableName=typeoperations
+ca permet de generer les models et api
