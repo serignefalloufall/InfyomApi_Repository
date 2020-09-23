@@ -128,4 +128,43 @@ class CompteAPIController extends AppBaseController
 
         return $this->sendSuccess('Compte deleted successfully');
     }
+
+
+    public function showSoldeByNum($num_compte)
+    {
+       // $compte = $this->compteRepository->find($id);  
+       // $solde = \DB::table('comptes')->whereId($num_compte)->pluck('solde');
+
+       $solde = \DB::table('comptes')
+       ->where('comptes.num_compte', $num_compte)->pluck('cle_rip');
+    //    $data = [];
+
+    //    dd($solde);
+
+        if (!empty($solde)) {
+            return $this->sendResponse($solde, 'solde retrieved successfully');
+        }else{
+            return $this->sendError('compte not found');
+
+        }
+
+    }
+
+    public function showAllOperation($num_compte)
+    {
+       $operations = \DB::table('comptes')
+       ->where('comptes.num_compte', $num_compte)
+       ->join('operations', 'operations.comptes_id', '=', 'comptes.id')->orderBy('comptes.id', 'DESC')->get();
+
+        if (!empty($operations)) {
+            return $this->sendResponse($operations, 'operations retrieved successfully');
+        }else{
+            return $this->sendError('compte not found');
+
+        }
+
+    }
+
+
+
 }

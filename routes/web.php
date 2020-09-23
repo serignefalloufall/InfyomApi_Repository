@@ -25,10 +25,6 @@ Route::resource('operations', 'OperationController');
 
 Route::resource('typeoperations', 'TypeoperationController');
 
-Route::resource('clients', 'ClientController');
-
-Route::resource('typeclients', 'TypeclientController');
-
 Route::resource('comptes', 'CompteController');
 
 Route::resource('typecomptes', 'TypecompteController');

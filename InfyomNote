@@ -1,2 +1,10 @@
 php artisan infyom:api_scaffold Typeoperation --fromTable --tableName=typeoperations
-ca permet de generer les models et api
+ca permet de generer les models et les controller de l'api 
+
+
+Open app\Providers\RouteServiceProvider.php and update mapApiRoutes method as following:
+Route::prefix('api')
+    ->middleware('api')
+    ->as('api.')
+    ->namespace($this->namespace."\\API")
+    ->group(base_path('routes/api.php'));     

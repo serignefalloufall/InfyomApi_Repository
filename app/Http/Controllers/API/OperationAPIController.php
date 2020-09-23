@@ -128,4 +128,24 @@ class OperationAPIController extends AppBaseController
 
         return $this->sendSuccess('Operation deleted successfully');
     }
+
+     /**
+     * Display the specified Operation.
+     * GET|HEAD /operations/{num}
+     *
+     * @param int $num
+     *
+     * @return Response
+     */
+    public function showOp($id)
+    {
+        /** @var Operation $operation */
+        $operation = $this->operationRepository->find($id);
+
+        if (empty($operation)) {
+            return $this->sendError('Operation not found');
+        }
+
+        return $this->sendResponse($operation->toArray(), 'Operation retrieved successfully');
+    }
 }

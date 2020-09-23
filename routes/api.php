@@ -26,3 +26,9 @@ Route::resource('typeoperations', 'TypeoperationAPIController');
 Route::resource('typecomptes', 'TypecompteAPIController');
 
 Route::resource('comptes', 'CompteAPIController');
+
+Route::get('showOp/{id}', 'OperationAPIController@showOp');
+
+Route::get('showSoldeByNum/{num_compte}', 'CompteAPIController@showSoldeByNum');
+
+Route::get('showAllOperation/{num_compte}', 'CompteAPIController@showAllOperation');
